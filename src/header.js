@@ -22,7 +22,7 @@ export default function getHeader(dev) {
     const absolutePath = path.resolve(__dirname, '../dev/main.js').replace(/\\/g, '/');
     fields.push(['require', `file:///${absolutePath}`]);
   } else {
-    const url = 'https://raw.githubusercontent.com/jmerle/chelper-custom-parsers/master/chelper-custom-parsers.user.js';
+    const url = 'https://raw.githubusercontent.com/jmerle/chelper-custom-parsers/master/dist/chelper-custom-parsers.user.js';
     fields.push(['updateURL', url]);
     fields.push(['downloadURL', url]);
   }

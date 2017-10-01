@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         CHelper Custom Parsers
 // @namespace    https://github.com/jmerle
-// @version      1.0.0
+// @version      1.0.1
 // @description  Adds custom parsers to CHelper.
 // @author       Jasper van Merle
 // @match        https://www.hackerrank.com/*
-// @updateURL    https://raw.githubusercontent.com/jmerle/chelper-custom-parsers/master/chelper-custom-parsers.user.js
-// @downloadURL  https://raw.githubusercontent.com/jmerle/chelper-custom-parsers/master/chelper-custom-parsers.user.js
+// @updateURL    https://raw.githubusercontent.com/jmerle/chelper-custom-parsers/master/dist/chelper-custom-parsers.user.js
+// @downloadURL  https://raw.githubusercontent.com/jmerle/chelper-custom-parsers/master/dist/chelper-custom-parsers.user.js
 // @grant        none
 // ==/UserScript==
 
