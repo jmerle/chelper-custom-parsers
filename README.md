@@ -22,7 +22,7 @@ Since most problem sites got https enabled, there's a little bit of a problem si
 #### Chrome
 For Chrome there are two ways to work around this issue:
 1. The more secure but also more annoying option. You'll have to repeat this process every browser session.
-    1. Go to any of the supported problem sites and click the "Parse" button.
+    1. Go to any of the supported problem sites ([example](https://www.hackerrank.com/challenges/simple-array-sum/problem)) and click the "Parse" button.
     2. Nothing happens because Chrome blocks the request, so click on the little shield icon on the right of the addressbar.
     3. In the popup that opened, click on 'Load unsafe scripts'.
     4. The page will refresh and the "Parse" button will work correctly.
@@ -32,7 +32,7 @@ For Chrome there are two ways to work around this issue:
 #### Firefox
 For Firefox, there are also two ways around the issue:
 1. Just like with Chrome, this is the more secure but also more annoying option. You'll have to repeat this process for every browser session and every problem site.
-    1. Go to any of the supported problem sites and click the "Parse" button.
+    1. Go to any of the supported problem sites ([example](https://www.hackerrank.com/challenges/simple-array-sum/problem)) and click the "Parse" button.
     2. Nothing happens because Firefox blocks the request, so click on the little green lock icon on the left of the addressbar.
     3. In the popup that opened, click on the arrow pointing right.
     4. Click on the button saying 'Disable protection for now'. The page will refresh and the "Parse" button will work correctly.
