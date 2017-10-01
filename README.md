@@ -2,41 +2,43 @@
 A userscript which adds custom parsers to CHelper.
 
 ## Description
-This userscript makes it possible to easily add new parsers to CHelper without modifying it's source or the extension. It works by making CHelper think it is receiving a CSAcademy task, while it is just an HTML body which is made to *look* like how CSAcademy structures their page. The downside is that it won't enable the button the CHelper extension adds to the browser, but you instead need to press on a button visible on the problem's or contest's page.
+This userscript makes it possible to easily add new parsers to CHelper without modifying it's source or the extension. It works by making CHelper think it is receiving a CSAcademy task, while it is just an HTML body which is made to *look* like how CSAcademy structures their page. The downside is that it won't enable the button the CHelper extension adds to the browser, but you instead need to click on a button visible on the problem's or contest's page.
 
 ### Included parsers
-- HackerRank: Adds a button to the problem sidebar and fixes the issue of HackerRank not working with CHelper anymore
+- HackerRank: Adds a button to the problem sidebar and fixes the issue of HackerRank not working with CHelper anymore.  
+![HackerRank example](images/hackerrank.png)
 
 ## Installation
-It's a userscript, so you'll need to install a userscript manager. I personally recommend [Tampermonkey](https://tampermonkey.net/) since this userscript doesn't seem to be working very well with Greasemonkey at the moment.
 
-When you got a userscript manager installed, clicking on the following link should show an installation window:  
-https://raw.githubusercontent.com/jmerle/chelper-custom-parsers/master/chelper-custom-parsers.user.js
+1. Install [Tampermonkey](https://tampermonkey.net/). This is the userscript manager this script was tested with.
+2. Click on the following link to install the userscript:
+https://raw.githubusercontent.com/jmerle/chelper-custom-parsers/master/dist/chelper-custom-parsers.user.js
+3. Make sure you got a CHelper project open.
+4. Read the information about mixed content below to get the userscript working.
 
-When you have auto-updating turned on in your userscript manager you will automatically receive the latest updates. If you got it disabled, you can simply click the install link again to install the latest updates when they are available.
+### Mixed content
+Since most problem sites got https enabled, there's a little bit of a problem since CHelper expects problems to be sent to a non-https url. Most browsers automatically stop scripts from making requests to an http domain from an https one, so you'll need to override this.
 
-Since most judges got https enabled, you'll need to manually enable requests to non-http locations (including localhost, which is where the tasks are sent to so CHelper can catch them). In Chrome, when the userscript attempts to send the task to CHelper, a little shield icon will show up in the top-right of the address bar. By clicking on this you can enable "unsafe scripts" for your current session. You can also enable it on Chrome by running Chrome with the `--allow-running-insecure-content` option. Firefox should have similar options.
+#### Chrome
+For Chrome there are two ways to work around this issue:
+1. The more secure but also more annoying option. You'll have to repeat this process every browser session.
+    1. Go to any of the supported problem sites ([example](https://www.hackerrank.com/challenges/simple-array-sum/problem)) and click the "Parse" button.
+    2. Nothing happens because Chrome blocks the request, so click on the little shield icon on the right of the addressbar.
+    3. In the popup that opened, click on 'Load unsafe scripts'.
+    4. The page will refresh and the "Parse" button will work correctly.
+2. The less secure but less annoying option. When configured properly, you only need to do this once.
+    1. Run Chrome with the `--allow-running-insecure-content` option.
 
-## Development
-
-### Getting up and running
-To add new parsers, a few things have to be done. First, clone or fork the repository and `cd` into the newly created directory. Then, install all the required dependencies with `npm install`.
-
-With the code pulled in and the necessary dependencies installed, you can run `npm run dev` to create a development build in `dev/`. Install the `chelper-custom-parsers-dev.user.js` as a userscript (don't forget to disable the non-dev version while developing!) and make sure `file:///` are allowed to be used by your userscript manager (see the answers to [this](https://stackoverflow.com/questions/9931115/run-greasemonkey-on-html-files-located-on-the-local-filesystem) Stack Overflow question to know how to enable this). After that's done, you can run `npm run watch` to automatically compile the latest changes, which are loaded when you refresh a page in the browser.
-
-### Adding new parsers
-To get an idea of how the parsers work, take a look at the HackerRank parser (all parsers can be found in the `src/parsers/` directory).
-
-To add a new parser, copy the ExampleParser to a new file and rename it. Then, add your parser to `src/parser/parsers.js`. This makes sure your parser is loaded and it's match patterns are included in the header. After you've read the note below you can start working on your new parser. The example parser is pretty well documented, but if you need any help, feel free to open an issue!
-
-**Note**: When you change the getMatchPatterns() method of any parser or when you make a change in `src/parser/parsers.js` it is necessary to run `npm run dev` again. After that, update the current content of the `CHelper Custom Parsers Dev` userscript with the data in `dev/chelper-custom-parsers-dev.user.js`. This is necessary because changes in the match patterns require the header to be updated.
-
-### Pull requests
-A few things about pull requests:
-- Make all pull requests towards the `development` branch
-- Make sure any updates you make or parsers you add are thoroughly tested
-- When adding parsers, make sure they work on both the challenge and the contest pages of a website (HackerRank for example has different ways to display a contest problem and a non-contest problem)
-- If you add new parsers, make sure the button which is used to send the task to CHelper is well visible and easy to spot
-- If you add new parsers, make sure to update the README
-- Make sure `npm run lint` doesn't show any errors or warnings (Airbnb's styleguide is used, with a few small differences)
-- State the changes you made in the pull request's description
+#### Firefox
+For Firefox, there are also two ways around the issue:
+1. Just like with Chrome, this is the more secure but also more annoying option. You'll have to repeat this process for every browser session and every problem site.
+    1. Go to any of the supported problem sites ([example](https://www.hackerrank.com/challenges/simple-array-sum/problem)) and click the "Parse" button.
+    2. Nothing happens because Firefox blocks the request, so click on the little green lock icon on the left of the addressbar.
+    3. In the popup that opened, click on the arrow pointing right.
+    4. Click on the button saying 'Disable protection for now'. The page will refresh and the "Parse" button will work correctly.
+2. Same as with Chrome, the less secure but less annoying option. You only need to do this once.
+    1. Go to `about:config`.
+    2. Click on 'I accept the risk' if a warning shows up.
+    3. Search for `security.mixed_content.block_active_content`.
+    4. Set this setting to false by double-clicking on the row.
+    5. Go back to the problem page and refresh it. The button will now correctly work.

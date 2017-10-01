@@ -1,3 +1,4 @@
+import path from 'path';
 import webpack from 'webpack';
 import merge from 'webpack-merge';
 import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
@@ -9,7 +10,7 @@ export default merge(common, {
     'chelper-custom-parsers.user.js': './src/index.js',
   },
   output: {
-    path: __dirname,
+    path: path.resolve(__dirname, 'dist/'),
   },
   plugins: [
     new UglifyJSPlugin(),
