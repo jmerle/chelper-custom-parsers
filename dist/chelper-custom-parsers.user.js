@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         CHelper Custom Parsers
 // @namespace    https://github.com/jmerle
-// @version      1.0.1
+// @version      1.0.0
 // @description  Adds custom parsers to CHelper.
 // @author       Jasper van Merle
 // @match        https://www.hackerrank.com/*
