@@ -6,7 +6,7 @@ This userscript makes it possible to easily add new parsers to CHelper without m
 
 ### Included parsers
 - HackerRank: Adds a button to the problem sidebar and fixes the issue of HackerRank not working with CHelper anymore.  
-![HackerRank example](images/hackerrank-example.png)
+![HackerRank example](images/hackerrank.png)
 
 ## Installation
 
