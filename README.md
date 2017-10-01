@@ -11,7 +11,7 @@ This userscript makes it possible to easily add new parsers to CHelper without m
 ## Installation
 
 1. Install [Tampermonkey](https://tampermonkey.net/). This is the userscript manager this script was tested with.
-2. Click on the following link to install the userscript:
+2. Click on the following link to install the userscript:  
 https://raw.githubusercontent.com/jmerle/chelper-custom-parsers/master/dist/chelper-custom-parsers.user.js
 3. Make sure you got a CHelper project open.
 4. Read the information about mixed content below to get the userscript working.
